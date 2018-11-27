@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Parkering</title>
+<link rel="stylesheet" type="text/css" href="stilark1.css">
+</head>
+<body>
+<ul>
+  <li><a href="kart.html">Kart</a></li>
+  <li><a class="active" href="innhold.html">Valg av innhold</a></li>
+  <li><a href="statistikk.html">Statistikk</a></li>
+</ul>
+<div id="objekter">
+<form style="margin-left: 12.5%">
+  <p>Juster margin for ledige plasser:</p>
+  <input type="range" min="10" max="100" value="25" class="slider" id="antall">
+  <p>Antall: <span id="ant"></span></p>
+  <p>Visning av din posisjon:</p>
+  <input type="checkbox" id="posisjonsjekk">
+  <p>Bakgrunnsfarge på websiden:</p>
+  <input type="color" name="bcolor" value="">
+  <br><br>
+  <input type="submit">
+</form>
+<script>
+var slider = document.getElementById("antall");
+var output = document.getElementById("ant");
+output.innerHTML = slider.value;
+
+slider.oninput = function(){
+  output.innerHTML = this.value;
+}
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Parkering</title>
+<link rel="stylesheet" type="text/css" href="stilark1.css">
+<meta name="viewport" content="initial-scale=1.0">
+<meta charset="utf-8">
+<style>
+      #map {
+        height: 40%;
+        width: 60%;
+        margin-left: 12.5%;
+      }
+</style>
+</head>
+<body>
+<ul>
+  <li><a class="active" href="kart.html">Kart</a></li>
+  <li><a href="innhold.html">Valg av innhold</a></li>
+  <li><a href="statistikk.html">Statistikk</a></li>
+</ul>
+  <div id="objekter">
+    <div id="googleMap" style="width:100%;height:400px;margin-left: 12.5%;"></div>
+
+    <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation er ikke støttet av din nettleser");
+      }
+    }
+    function myMap() {
+    var mapProp= {
+        center:new google.maps.LatLng(59.6751968,10.6560021),
+        zoom:15,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var posmarker = new google.maps.Marker({position: position.coord.latitude, position.coords.longitude});
+    posmarker.setMap(googleMap);
+    }
+    </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAEXRHWHe8ukfOS1yMC_cNmDVMwh1UnlQ&callback=myMap">
+</script>
+
+<form style="margin-left: 12.5%;">
+  <p>Juster margin for ledige plasser:</p>
+  <input type="range" min="10" max="100" value="25" class="slider" id="antall">
+  <p>Antall: <span id="ant"></span></p>
+  <p>Visning av din posisjon:</p>
+  <input type="checkbox" id="posisjonsjekk">
+  <p>Bakgrunnsfarge på websiden:</p>
+  <input type="color" name="bcolor" value="">
+  <br><br>
+  <input type="submit">
+</form>
+<script>
+var slider = document.getElementById("antall");
+var output = document.getElementById("ant");
+output.innerHTML = slider.value;
+
+slider.oninput = function(){
+  output.innerHTML = this.value;
+}
+</script>
+</div>
+</body>
+</html>
